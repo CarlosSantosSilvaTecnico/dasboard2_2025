@@ -24,11 +24,9 @@ df_real = pd.read_csv('real_results.csv')
 y2=df_real['Power (kW) [Y]'].values
 
 #Load and run LR model
-
-
-LR_model2 = joblib.load('LR_model.sav')
-
-y2_pred_LR = LR_model2.predict(X2)
+#LR_model2 = joblib.load('LR_model.sav')
+#y2_pred_LR = LR_model2.predict(X2)
+y2_pred_LR=y2
 
 #Evaluate errors
 MAE_LR=metrics.mean_absolute_error(y2,y2_pred_LR) 
@@ -37,11 +35,11 @@ MSE_LR=metrics.mean_squared_error(y2,y2_pred_LR)
 RMSE_LR= np.sqrt(metrics.mean_squared_error(y2,y2_pred_LR))
 cvRMSE_LR=RMSE_LR/np.mean(y2)
 NMBE_LR=MBE_LR/np.mean(y2)
+
 #Load RF model
-RF_model2 = joblib.load('RF_model.sav')
-
-
-y2_pred_RF = RF_model2.predict(X2)
+#RF_model2 = joblib.load('RF_model.sav')
+#y2_pred_RF = RF_model2.predict(X2)
+y2_pred_RF=y2
 
 #Evaluate errors
 MAE_RF=metrics.mean_absolute_error(y2,y2_pred_RF)
